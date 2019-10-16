@@ -6,10 +6,9 @@
   <author email="fredrik@ginsberg.se">Fredrik Ginsberg</author>
 
   <license>BSD</license>
-
-  <url type="website">http://ros.org/wiki/four_wheel_steering_controller</url>
-  <url type="bugtracker">https://github.com/ros-controls/ros_controllers/issues</url>
-  <url type="repository">https://github.com/ros-controls/ros_controllers</url>
+  
+  <url type="bugtracker">https://github.com/bob-ROS/four_wheel_carlike_steering_controller/issues</url>
+  <url type="repository">https://github.com/bob-ROS/four_wheel_carlike_steering_controller</url>
 
   <buildtool_depend>catkin</buildtool_depend>
 
