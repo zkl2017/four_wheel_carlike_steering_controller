@@ -128,4 +128,4 @@ namespace four_wheel_carlike_steering_controller
     return tmp != 0.0 ? v / tmp : 1.0;
   }
 
-} // namespace four_wheel_steering_controller
+} // namespace four_wheel_carlike_steering_controller
