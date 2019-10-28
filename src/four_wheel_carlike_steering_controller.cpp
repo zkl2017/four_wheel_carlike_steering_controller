@@ -284,7 +284,7 @@ namespace four_wheel_carlike_steering_controller{
     // fix this steering pos above
     //ROS_DEBUG_STREAM_THROTTLE(1, "rl_steering "<<rl_steering<<" rr_steering "<<rr_steering<<" rear_steering_pos "<<rear_steering_pos);
     // Estimate linear and angular velocity using joint information
-    odometry_.update(rl_speed, rr_speed,front_steering_pos, time);
+    odometry_.update(rl_speed, rr_speed,front_steering_pos, time); // renable this later
 
     // Publish odometry message
     if (last_state_publish_time_ + publish_period_ < time)

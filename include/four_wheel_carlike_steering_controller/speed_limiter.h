@@ -132,6 +132,6 @@ namespace four_wheel_carlike_steering_controller
     double max_jerk;
   };
 
-} // namespace four_wheel_steering_controller
+} // namespace four_wheel_carlike_steering_controller
 
 #endif // SPEED_LIMITER_H

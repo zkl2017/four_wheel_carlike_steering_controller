@@ -121,6 +121,25 @@ namespace four_wheel_carlike_steering_controller
   bool Odometry::update(const double &fl_speed, const double &fr_speed,
                         double front_steering, const ros::Time &time)
   {
+    double average_rear_speed = (fl_speed + fr_speed)/2;
+    linear_x_ = (average_rear_speed*cos(front_steering)*wheel_radius_); //x' = cos(steering)*v = cos(steering)*w*r
+    linear_y_ = (average_rear_speed*sin(front_steering)*wheel_radius_); //y' = sin(steering)*v = sin(steering)*w*r
+    angular_= std::tan(front_steering) * average_rear_speed * wheel_radius_ / wheel_base_; // theta' = tan(steering)*w*r/L
+    /// Compute x, y and heading using velocity
+    const double dt = (time - last_update_timestamp_).toSec();
+    if (dt < 0.0001)
+      return false; // Interval too small to integrate with
+
+    last_update_timestamp_ = time;
+    /// Integrate odometry:
+    integrateXY(linear_x_*dt, linear_y_*dt, angular_*dt);
+
+    linear_accel_acc_((linear_vel_prev_ - linear_)/dt);
+    linear_vel_prev_ = linear_;
+    linear_jerk_acc_((linear_accel_prev_ - bacc::rolling_mean(linear_accel_acc_))/dt);
+    linear_accel_prev_ = bacc::rolling_mean(linear_accel_acc_);
+    front_steer_vel_acc_((front_steer_vel_prev_ - front_steering)/dt);
+    front_steer_vel_prev_ = front_steering;
     return true;
   }
 

@@ -228,4 +228,4 @@ namespace four_wheel_carlike_steering_controller{
   };
 
   PLUGINLIB_EXPORT_CLASS(four_wheel_carlike_steering_controller::FourWheelCarlikeSteeringController, controller_interface::ControllerBase);
-} // namespace four_wheel_steering_controller
+} // namespace four_wheel_carlike_steering_controller
